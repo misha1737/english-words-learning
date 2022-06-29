@@ -6,6 +6,7 @@ export interface Props {
   input: Function
   label: string
   password: boolean
+  sx?:Object
 } 
 function EditText(props:Props) {
   let textOnChange=(data: React.ChangeEvent<HTMLInputElement>)=>{
@@ -18,7 +19,7 @@ function EditText(props:Props) {
     return (
       <div>
         <span></span>
-        <TextField id="outlined-basic" label={props.label} type={props.password? "password": ""} variant="outlined" value={props.value} onChange={textOnChange} />
+        <TextField id="outlined-basic" sx={props.sx} label={props.label} type={props.password? "password": ""} variant="outlined" value={props.value} onChange={textOnChange} />
       </div>
     )
   }
