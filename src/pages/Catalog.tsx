@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import { useDispatch, useSelector } from "react-redux";
+import { getCatalog } from "../redux/modules/catalog/reducer";
 function Catalog() {
+  useEffect(() => {
+    dispatch(getCatalog());
+  }, []);
+  const dispatch = useDispatch();
   return (
     <Container maxWidth="sm">
       <Box

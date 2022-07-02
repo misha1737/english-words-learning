@@ -1,19 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 export interface UserData {
   email: string;
   password: string;
   loading: boolean;
   error: string | null;
 }
-
 const initialState: UserData = {
   email: "",
   password: "",
   loading: false,
   error: null,
 };
-
 export const auth = createSlice({
   name: "Auth",
   initialState,
@@ -31,7 +28,5 @@ export const auth = createSlice({
     },
   },
 });
-
 export const { login, loading, setError } = auth.actions;
-
 export default auth.reducer;

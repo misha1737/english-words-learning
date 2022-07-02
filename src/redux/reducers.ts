@@ -1,12 +1,12 @@
 import auth, { UserData } from "./modules/auth/reducer";
-// import lists, {List} from './list.js';
+import catalog, { Catalog } from "./modules/catalog/reducer";
 import { combineReducers } from "redux";
 
 export interface State {
-  // lists:  List[],
+  catalog: Catalog;
   auth: UserData;
 }
 export const reducers = combineReducers({
   auth,
-  //   lists,
+  catalog,
 });
