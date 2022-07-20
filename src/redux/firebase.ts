@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import "@firebase/firestore"; // 👈 If you're using firestore
 import { getDatabase, ref } from "firebase/database";
 import { getAuth } from "firebase/auth";
+
 const firebase = initializeApp({
   apiKey: "AIzaSyBQYp2Mbj4_H801TL0CUdVJZbTimnMZC3c",
   authDomain: "english-88fd9.firebaseapp.com",

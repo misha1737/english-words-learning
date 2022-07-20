@@ -6,10 +6,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { State } from "./../redux/reducers";
 import Typography from "@mui/material/Typography";
-import { browserHistory } from "./../redux/history";
-import { Link, useNavigate } from "react-router-dom";
 function Authorization() {
-  let navigate = useNavigate();
   const loading = useSelector((state: State) => state.auth.loading);
   const error = useSelector((state: State) => state.auth.error);
   const dispatch = useDispatch();
@@ -26,12 +23,6 @@ function Authorization() {
     setPassword(value);
     dispatch(setError(null));
   };
-  const test = () => {
-    console.log("click");
-    //browserHistory.push("/catalog");
-    setEmail("click");
-    //  navigate("../catalog", { replace: true });
-  };
 
   return (
     <Box
@@ -42,9 +33,7 @@ function Authorization() {
         alignItems: "center",
       }}
     >
-      <Button onClick={test}>test</Button>
       <EditText input={changeEmail} value={email} label="Login" />
-      <Link to="/catalog">Invoices</Link>
       <EditText
         sx={{
           marginTop: 2,

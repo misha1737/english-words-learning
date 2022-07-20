@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { browserHistory } from "./../../history";
-export interface UserData {
+export interface AuthData {
   email: string;
   password: string;
   loading: boolean;
   error: string | null;
 }
-const initialState: UserData = {
+const initialState: AuthData = {
   email: "",
   password: "",
   loading: false,
@@ -20,7 +19,6 @@ export const auth = createSlice({
       state.email = action.payload.email;
       state.password = action.payload.password;
       state.loading = true;
-      browserHistory.push("/catalog");
       console.log("gggg");
     },
     loading: (state, action) => {
