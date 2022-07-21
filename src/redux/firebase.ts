@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import "@firebase/firestore"; // 👈 If you're using firestore
 import { getDatabase, ref } from "firebase/database";
 import { getAuth } from "firebase/auth";
-
+import { getFirestore, collection } from "firebase/firestore";
 const firebase = initializeApp({
   apiKey: "AIzaSyBQYp2Mbj4_H801TL0CUdVJZbTimnMZC3c",
   authDomain: "english-88fd9.firebaseapp.com",
@@ -15,6 +15,7 @@ const firebase = initializeApp({
 });
 export const auth = getAuth();
 export const database = ref(getDatabase());
+export const db = getFirestore(firebase);
 
 //const database = rsf.database();
 export default firebase;

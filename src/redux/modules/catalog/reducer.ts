@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Key } from "readline";
 export interface Blocks {
-  id: String;
-  name: String;
+  id: string;
+  name: string;
   count: Number;
 }
 export interface Catalog {
@@ -18,8 +19,8 @@ export const catalog = createSlice({
   name: "Catalog",
   initialState,
   reducers: {
-    getCatalog: () => {
-      console.log("!!!!");
+    getCatalog: (state) => {
+      state.loading = true;
     },
     loading: (state, action) => {
       state.loading = action.payload;
