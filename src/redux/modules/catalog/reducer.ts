@@ -8,11 +8,13 @@ export interface Blocks {
 export interface Catalog {
   loading: boolean;
   error: string | null;
+  openTopicModal: boolean;
   blocks: Blocks[];
 }
 const initialState: Catalog = {
   loading: true,
   error: null,
+  openTopicModal: false,
   blocks: [],
 };
 export const catalog = createSlice({
@@ -25,6 +27,12 @@ export const catalog = createSlice({
     loading: (state, action) => {
       state.loading = action.payload;
     },
+    addNewTopic: (state, action) => {
+      state.loading = true;
+    },
+    toOpenTopicModal: (state, action) => {
+      state.openTopicModal = action.payload;
+    },
     setError: (state, action) => {
       state.error = action.payload;
     },
@@ -33,5 +41,12 @@ export const catalog = createSlice({
     },
   },
 });
-export const { getCatalog, loading, setError, setBlocks } = catalog.actions;
+export const {
+  getCatalog,
+  loading,
+  setError,
+  setBlocks,
+  toOpenTopicModal,
+  addNewTopic,
+} = catalog.actions;
 export default catalog.reducer;

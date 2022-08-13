@@ -16,9 +16,9 @@ function App() {
   const userData = useSelector((state: State) => state.user.userData);
   useEffect(() => {
     if (userData) {
-      navigate("/catalog", { replace: true });
+      //s  navigate("/catalog", { replace: true });
     } else {
-      navigate("/login", { replace: true });
+      // navigate("/login", { replace: true });
     }
   }, [userData]);
   useEffect(() => {

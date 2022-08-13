@@ -7,6 +7,7 @@ it("check add blocks", () => {
   const initialState = {
     loading: true,
     error: null,
+    openTopicModal: false,
     blocks: [],
   };
   const newState = catalog(initialState, action);

@@ -20,3 +20,24 @@ export function* workerTopic(action: {
   }
   yield put(loading(false));
 }
+export function* workerAddWord(action: {
+  type: string;
+  payload: { word: string; translate: string };
+}): Generator<any> {
+  try {
+    // const colRef = collection(db, "blocks", action.payload, "words");
+    // const snapshots: any = yield getDocs(colRef);
+    // const docs = snapshots.docs.map((doc: any) => {
+    //   const data = doc.data();
+    //   data.id = doc.id;
+    //   return data;
+    // });
+    //yield put(setWords(docs));
+
+    console.log("5555", action.payload);
+  } catch (err) {
+    console.error(err);
+    yield put(setError("Error loading topic"));
+  }
+  yield put(loading(false));
+}

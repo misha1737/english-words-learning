@@ -1,3 +1,6 @@
 import { takeEvery, takeLatest } from "redux-saga/effects";
-import { workerCatalog } from "./actions";
-export default [takeLatest("Catalog/getCatalog", workerCatalog)];
+import { workerCatalog, workerNewTopic } from "./actions";
+export default [
+  takeLatest("Catalog/getCatalog", workerCatalog),
+  takeEvery("Catalog/addNewTopic", workerNewTopic),
+];

@@ -4,22 +4,34 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { useDispatch, useSelector } from "react-redux";
-import { getTopic } from "../redux/modules/topic/reducer";
+import { getTopic, toOpenWordModal } from "../redux/modules/topic/reducer";
 import { State } from "./../redux/reducers";
 import { Link, useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
-function Catalog() {
+import EditWordModal from "./../components/EditWordModal";
+import BackButton from "./../components/BackButton";
+function Topic() {
   const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const words = useSelector((state: State) => state.topic.words);
+  const openWordModal = useSelector(
+    (state: State) => state.topic.openWordModal
+  );
   useEffect(() => {
     dispatch(getTopic(params.id));
   }, []);
-  const openModal = () => {};
+  const openModal = () => {
+    dispatch(toOpenWordModal(true));
+  };
+  const closeModal = () => {
+    dispatch(toOpenWordModal(false));
+  };
+  const [isOpenedModal, setOpenModal] = useState(false);
   return (
     <Container maxWidth="lg">
+      <BackButton />
       <Button
         sx={{
           marginTop: 2,
@@ -46,8 +58,9 @@ function Catalog() {
       ) : (
         <></>
       )}
+      {openWordModal ? <EditWordModal close={closeModal} /> : <></>}
     </Container>
   );
 }
 
-export default Catalog;
+export default Topic;
