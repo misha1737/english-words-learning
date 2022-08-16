@@ -26,15 +26,33 @@ function Login() {
           alignItems: "center",
         }}
       >
-        <Paper>
+        <Paper sx={{ padding: "20px" }}>
           <ToggleButtonGroup
             color="primary"
             value={selectedTab}
             exclusive
             onChange={handleChange}
+            sx={{
+              display: "flex",
+              flexGrow: 1,
+            }}
           >
-            <ToggleButton value="authorization">Authorization</ToggleButton>
-            <ToggleButton value="registration">Registration</ToggleButton>
+            <ToggleButton
+              sx={{
+                flexGrow: 1,
+              }}
+              value="authorization"
+            >
+              Sign in
+            </ToggleButton>
+            <ToggleButton
+              sx={{
+                flexGrow: 1,
+              }}
+              value="registration"
+            >
+              Sign up
+            </ToggleButton>
           </ToggleButtonGroup>
 
           {selectedTab == "authorization" ? (

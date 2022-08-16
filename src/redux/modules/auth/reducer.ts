@@ -19,7 +19,11 @@ export const auth = createSlice({
       state.email = action.payload.email;
       state.password = action.payload.password;
       state.loading = true;
-      console.log("gggg");
+    },
+    registration: (state, action) => {
+      state.email = action.payload.email;
+      state.password = action.payload.password;
+      state.loading = true;
     },
     loading: (state, action) => {
       state.loading = action.payload;
@@ -33,5 +37,5 @@ export const auth = createSlice({
     },
   },
 });
-export const { login, loading, setError, success } = auth.actions;
+export const { login, registration, loading, setError, success } = auth.actions;
 export default auth.reducer;

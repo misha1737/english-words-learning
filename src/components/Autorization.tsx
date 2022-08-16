@@ -1,5 +1,5 @@
 import EditText from "./EditComponents/EditText";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, setError } from "../redux/modules/auth/reducer";
 import Button from "@mui/material/Button";
@@ -15,6 +15,10 @@ function Authorization() {
   };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isValidData, setisValidData] = useState(false);
+  useEffect(() => {
+    setisValidData(email.length > 3 && password.length > 7);
+  }, [email, password]);
   const changeEmail = (value: string) => {
     setEmail(value);
     dispatch(setError(null));
@@ -23,7 +27,6 @@ function Authorization() {
     setPassword(value);
     dispatch(setError(null));
   };
-
   return (
     <Box
       sx={{
@@ -53,17 +56,18 @@ function Authorization() {
         {error}
       </Typography>
       <Button
+        fullWidth
         sx={{
           marginTop: 2,
           marginBottom: 2,
           display: "flex",
         }}
         size="large"
-        disabled={(!email.length && !password.length) || loading}
+        disabled={!isValidData || loading}
         onClick={auth}
         variant="contained"
       >
-        Login
+        Sign in
       </Button>
     </Box>
   );

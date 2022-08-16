@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { getCatalog, toOpenTopicModal } from "../redux/modules/catalog/reducer";
-
 import { State } from "./../redux/reducers";
 import { Link, useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";

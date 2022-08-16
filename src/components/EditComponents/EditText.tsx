@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 export interface Props {
   value: string;
   input: Function;
+  blur?: Function;
   label: string;
   password: boolean;
   sx?: Object;
@@ -14,17 +15,21 @@ function EditText(props: Props) {
       props.input(text);
     }
   };
-
+  const inputBlur = () => {
+    if (props.blur) {
+      props.blur();
+    }
+  };
   return (
     <div>
       <TextField
-        id="outlined-basic"
         sx={props.sx}
         label={props.label}
         type={props.password ? "password" : ""}
         variant="outlined"
         value={props.value}
         onChange={textOnChange}
+        onBlur={inputBlur}
       />
     </div>
   );
