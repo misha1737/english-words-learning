@@ -14,7 +14,6 @@ import BackButton from "./../components/BackButton";
 function Topic() {
   const params = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const words = useSelector((state: State) => state.topic.words);
   const openWordModal = useSelector(
     (state: State) => state.topic.openWordModal

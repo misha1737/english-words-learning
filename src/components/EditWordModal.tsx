@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addNewWord } from "../redux/modules/topic/reducer";
 import { useState } from "react";
 import { State } from "./../redux/reducers";
-
+import { useParams } from "react-router-dom";
 export type Props = {
   close: Function;
 };
@@ -16,6 +16,7 @@ function EditWordModal(props: Props) {
   const loading = useSelector((state: State) => state.topic.loading);
   const [word, setWord] = useState("");
   const [translate, setTranslate] = useState("");
+  const params = useParams();
   const changeWord = (value: string) => {
     setWord(value);
   };
@@ -23,7 +24,7 @@ function EditWordModal(props: Props) {
     setTranslate(value);
   };
   let saveWord = () => {
-    dispatch(addNewWord({ word, translate }));
+    dispatch(addNewWord({ word, translate, topicId:params.id  }));
   };
   return (
     <SimpleModal close={props.close}>
