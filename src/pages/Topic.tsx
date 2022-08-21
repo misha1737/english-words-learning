@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
+import { useEffect } from "react";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopic, toOpenWordModal } from "../redux/modules/topic/reducer";
 import { State } from "./../redux/reducers";
-import { Link, useNavigate } from "react-router-dom";
-import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
 import EditWordModal from "./../components/EditWordModal";
+import Table from  "../components/wordsTable";
 import BackButton from "./../components/BackButton";
 function Topic() {
   const params = useParams();
@@ -27,7 +24,7 @@ function Topic() {
   const closeModal = () => {
     dispatch(toOpenWordModal(false));
   };
-  const [isOpenedModal, setOpenModal] = useState(false);
+
   return (
     <Container maxWidth="lg">
       <BackButton />
@@ -43,20 +40,7 @@ function Topic() {
       >
         Add word
       </Button>
-      {words ? (
-        words.map((word) => (
-          <Typography
-            key={word.id}
-            sx={{ textAlign: "center" }}
-            variant="h5"
-            component="h5"
-          >
-            {word.translate}
-          </Typography>
-        ))
-      ) : (
-        <></>
-      )}
+      {words ? <Table rows={words}/> : <></>}
       {openWordModal ? <EditWordModal close={closeModal} /> : <></>}
     </Container>
   );

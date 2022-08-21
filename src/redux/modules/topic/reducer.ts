@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Key } from "readline";
-export type Words = {
+
+export type Word = {
   id: string;
   word: string;
   learned: boolean;
@@ -10,7 +11,7 @@ export type Topic = {
   loading: boolean;
   error: string | null;
   openWordModal: boolean;
-  words: Words[];
+  words: Word[];
 };
 const initialState: Topic = {
   loading: true,
